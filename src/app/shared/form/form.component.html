@@ -1,0 +1,81 @@
+<section class="signup">
+  <div class="signup__container">
+    <h4 class="signup__title">
+      {{ 'готовы к сотрудничеству или остались вопросы?' }}
+    </h4>
+    <form
+      [formGroup ]="form"
+      class="signup__form"
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid"
+      #f="ngForm"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label> {{ 'name'}}</mat-label>
+        <input
+          matInput
+          placeholder="enter name"
+          type="text"
+          formControlName="name"
+        />
+        <small class="signup__error" *ngIf="name?.hasError('required')">
+          {{ 'er' }}
+        </small>
+        <small class="login__input-error" *ngIf="name?.hasError('email')">
+          {{ 'err' }}
+        </small>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'phone' }}</mat-label>
+        <input
+          matInput
+          placeholder="enter phone"
+          type="text"
+          formControlName="phone"
+        />
+        <small class="signup__error" *ngIf="phone?.hasError('required')">
+          {{ 'err' }}
+        </small>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'company' }}</mat-label>
+        <input
+          matInput
+          placeholder="enter company"
+          formControlName="company"
+          type="text"
+        />
+
+        <small
+          class="login__input-error"
+          *ngIf="company?.hasError('required')"
+        >
+          {{ 'error' }}
+        </small>
+
+        <small
+          class="login__input-error"
+          *ngIf="company?.hasError('atLeastEightCharachters')"
+        >
+          {{ 'error' }}
+        </small>
+
+      </mat-form-field>
+
+      <div>
+        <button type="submit" mat-button [disabled]="form.invalid">
+          {{ 'send' }}
+        </button>
+      </div>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        {{ 'err' }}<br />{{ errorMessage }}
+      </div>
+    </form>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      {{ 'succes' }}
+    </div>
+  </div>
+</section>
