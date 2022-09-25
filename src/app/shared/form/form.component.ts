@@ -20,9 +20,11 @@ export class FormComponent implements OnInit {
 
   public isSuccessful: boolean = false;
 
-  public isSignUpFailed: boolean = false;
+  public isSignUpFailed: boolean = true;
 
   public errorMessage: string = '';
+
+  public disabled = false;
 
   public constructor(
     //private snackBar: MatSnackBar,
@@ -45,59 +47,20 @@ export class FormComponent implements OnInit {
     this.initForm();
   }
 
-  /*public onSubmit(): void {
-    const login: string = this.login?.value;
+  public onSubmit(): void {
     const name: string = this.name?.value;
-    const password: string = this.password?.value;
+    const phone: string = this.phone?.value;
+    const company: string = this.company?.value;
+    this.isSignUpFailed = false;
 
-    this.authService.signUp(name, login, password).subscribe({
-      next: (response: SignUpResponse) => {
-        this.tokenStorage.saveUser(response);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-
-        this.translate
-          .get(['auth.success', 'dialog.close'])
-          .subscribe((message: Record<string, string>) => {
-            this.snackBar.open(
-              message['auth.success'],
-              message['dialog.close'],
-              {
-                duration: 3000,
-                panelClass: ['green-snackbar'],
-              },
-            );
-          });
-        this.router.navigate(['auth', 'login']).then();
-      },
-      error: (response: HttpErrorResponse) => {
-        this.isSignUpFailed = true;
-        let errorMessage: string = '';
-        switch (response?.error?.message) {
-          case 'User was not founded!':
-            errorMessage = 'auth.user-not-found';
-            break;
-          default:
-            errorMessage = response.message;
-            break;
-        }
-        this.translate
-          .get([errorMessage, 'dialog.close'])
-          .subscribe((message: Record<string, string>) => {
-            this.snackBar.open(message[errorMessage], message['dialog.close'], {
-              duration: 3000,
-              panelClass: ['red-snackbar'],
-            });
-          });
-      },
-    });
-  }*/
+    console.log(name, phone, company)
+  }
 
   public initForm(): void {
     this.form = this.formBuilder.group({
-      name: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      company: new FormControl('', [Validators.required]),
+      name: new FormControl(''),
+      phone: new FormControl('', [Validators.required, Validators.pattern('[0-9 ]{12}')]),
+      company: new FormControl(''),
     });
   }
 }
