@@ -1,0 +1,8 @@
+@import '../../../shared/styles/variables.scss';
+
+.footer {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  background: $footer-color;
+}

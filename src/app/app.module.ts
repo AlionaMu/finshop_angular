@@ -8,6 +8,7 @@ import { FormModule } from './shared/form/form.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatButtonModule} from '@angular/material/button';
+import { PromoModule } from './promo/promo.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     BrowserModule,
     CoreModule,
+    PromoModule,
     ReactiveFormsModule,
     FormModule,
     MatFormFieldModule,

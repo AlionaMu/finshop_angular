@@ -1,4 +1,5 @@
 @import '../../../shared/styles/variables.scss';
+@import '../../../shared/styles/mixins.scss';
 
 .promo__title-content {
   height: 94px;
@@ -25,10 +26,22 @@
   width: 100%;
   column-gap: 2vw;
   padding-top: 30px;
+  @include tablet {
+    flex-direction: column;
+  }
 }
 
 .promo__card {
   width: 22vw;
+  @include tablet {
+    width: 60vw;
+  }
+}
+
+.promo__img-contain {
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 .promo__img {
@@ -45,8 +58,26 @@
   text-align: center;
 }
 
+.promo__card-subtitle {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  color: $subtitle-color;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .promo__text {
   margin-bottom: 14px;
   color: $font-color;
   text-align: left;
+}
+
+.promo__text_big {
+  line-height: 22px;
+}
+
+.promo__icon {
+  margin-bottom: 30px;
+  width: 110px;
 }

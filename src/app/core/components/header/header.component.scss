@@ -1,5 +1,28 @@
 @import '../../../shared/styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
 
-* {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 90px;
+  padding: 80px 10px;
   background-color: $main-color;
+
+}
+
+.header__title {
+  margin: 20px auto;
+  font: 500 46px "Montserrat", sans-serif;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1.6px;
+}
+
+.header__text {
+  color: $extra-color;
+  font: 400 16px "Open Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
