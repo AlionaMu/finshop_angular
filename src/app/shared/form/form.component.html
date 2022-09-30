@@ -1,13 +1,16 @@
 <section class="form">
-  <div class="form__container">
+  <div class="form__result" *ngIf="isSuccessful">
+    <img src="../../../assets/icons/result.svg" class="form__result-icon">
+    <p class="form__result-text">Благодарим! Менеджер Finshop свяжется с Вами в ближайшее время</p>
+  </div>
+  <div class="form__container" *ngIf="!isSuccessful">
     <h4 class="form__title">
       {{ 'Готовы к сотрудничеству или остались вопросы?' }}
     </h4>
-    <p class="form__desc"> Оставьте, пожалуйста, свою контактную информацию и наши менеджеры свяжутся с Вами в ближайшее время, чтобы уточнить условия сотрудничества</p>
+    <p class="form__desc">Оставьте, пожалуйста, свою контактную информацию и наши менеджеры свяжутся с Вами</p>
     <form
       [formGroup]="form"
       class="form__form"
-      *ngIf="!isSuccessful"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
@@ -21,7 +24,6 @@
           formControlName="name"
         />
       </mat-form-field>
-
       <mat-form-field appearance="fill">
         <mat-label> {{ 'Телефон' }}</mat-label>
         <input
@@ -43,13 +45,16 @@
           type="text"
         />
       </mat-form-field>
-      <mat-checkbox class="form__checkbox">
-        <a href="https://finshop.by/media/docs/PrivacyPolicy.pdf" target="_blank" class="form__link">
-          Даю согласие на обработку указанных мной персональных данных в соответствии с Политикой
-           в отношении обработки персональных данных
-        </a>
-      </mat-checkbox>
-        <button type="submit" mat-button [disabled]="form.invalid || disabled">
+      <div class="form__checkbox">
+        <input id="checkbox" type="checkbox" required="required">
+        <label for="checkbox">
+          <a href="https://finshop.by/media/docs/PrivacyPolicy.pdf" target="_blank" class="form__link">
+            Даю согласие на обработку указанных мной персональных данных в соответствии с Политикой
+             в отношении обработки персональных данных
+          </a>
+        </label>
+      </div>
+        <button type="submit" mat-button [disabled]="form.invalid || disabled" class="form__button">
          Отправить
         </button>
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">

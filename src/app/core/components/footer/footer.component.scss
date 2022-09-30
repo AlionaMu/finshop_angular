@@ -1,8 +1,65 @@
 @import '../../../shared/styles/variables.scss';
+@import '../../../shared/styles/mixins.scss';
 
 .footer {
   display: flex;
-  min-height: 48px;
-  align-items: center;
-  background: $footer-color;
+  height: $footer-height;
+  padding: 0 3vw;
+  color: $font-color;
+  font-size: 14px;
+  background-color: $secondary-color;
+  @include tablet {
+    flex-direction: column;
+  }
+  @include smart {
+    height: 200px;
+  }
+
+  &__info {
+    width: 46vw;
+    line-height: 25px;
+    align-self: center;
+    @include tablet {
+      width: 80vw;
+      margin-top: 35px;
+      text-align: center;
+      line-height: 15px;
+    }
+  }
+
+  &__media {
+    display: flex;
+    width: 46vw;
+    justify-content: flex-end;
+    align-items: center;
+    @include tablet {
+      width: 80vw;
+      justify-content: center;
+    }
+  }
+
+  &__media-list {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    @include tablet {
+      justify-content: center;
+    }
+  }
+
+  &__media-link {
+    border: 1px solid $font-color;
+    border-radius: 50%;
+    padding: 8px;
+    margin: 0 8px;
+  }
+
+  &__media-link:hover, &__finshop-link:hover {
+    opacity: 0.7;
+  }
+
+  &__finshop-link {
+    color: $font-color;
+    text-decoration: none;
+  }
 }

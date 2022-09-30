@@ -9,7 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
-  declarations: [FormComponent],
+  declarations: [
+    FormComponent
+  ],
   imports: [
             CommonModule,
             MatFormFieldModule,
@@ -19,6 +21,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
             MatButtonModule,
             MatCheckboxModule
           ],
-  exports: [FormComponent],
+  exports: [
+    FormComponent
+  ],
 })
 export class FormModule {}

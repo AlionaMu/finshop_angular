@@ -1,5 +1,5 @@
+import { PostService } from './../../core/services/user.service';
 import { Component, OnInit } from '@angular/core';
-//import { SignUpResponse } from '../../models/authorization.model';
 import {
   AbstractControl,
   FormBuilder,
@@ -7,8 +7,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-//import { MatSnackBar } from '@angular/material/snack-bar';
-//import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-form',
@@ -22,13 +20,17 @@ export class FormComponent implements OnInit {
 
   public isSignUpFailed: boolean = true;
 
+  public isChecked = false;
+
   public errorMessage: string = '';
 
   public disabled = false;
 
   public constructor(
-    //private snackBar: MatSnackBar,
+
     private formBuilder: FormBuilder,
+
+    public postService: PostService
   ) {}
 
   public get name(): AbstractControl | null {
@@ -52,8 +54,12 @@ export class FormComponent implements OnInit {
     const phone: string = this.phone?.value;
     const company: string = this.company?.value;
     this.isSignUpFailed = false;
+    this.isSuccessful = true;
 
-    console.log(name, phone, company)
+    this.postService.postData(name, phone, company).subscribe({
+      next: (response: any) => {console.log(response)},
+      error: (error: any) => console.log(error)
+      });
   }
 
   public initForm(): void {

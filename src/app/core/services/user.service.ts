@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { apiRoot } from 'src/environments/environment';
-import { UserData } from '../../promo/models/user.model';
-import { Observable, Subject } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root',
@@ -11,18 +8,21 @@ import { Observable, Subject } from 'rxjs';
 export class PostService {
 
   public constructor(
-    public http: HttpClient,
+    public http: HttpClient
   ) {}
 
   public postData(
     name: string,
     phone: string,
     company: string,
-  ): Observable<UserData> {
-    return this.http.post<UserData>(`${apiRoot}`, {
+  ): any {
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = { headers: headers };
+    return this.http.post<any>(`${apiRoot}/v1/promoform`, {
       name,
       phone,
       company
-    });
+    }, options);
   }
 }

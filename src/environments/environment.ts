@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const apiRoot: string = 'http://localhost:4200/api';
+export const apiRoot: string = 'http://185.183.120.121:8800';
 
 /*
  * For easier debugging in development mode, you can import the following file

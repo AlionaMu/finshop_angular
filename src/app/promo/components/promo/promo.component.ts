@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 const images = [
   {path: '../../../assets/images/sber.png'},
@@ -14,11 +14,8 @@ const images = [
   templateUrl: './promo.component.html',
   styleUrls: ['./promo.component.scss']
 })
-export class PromoComponent implements OnInit {
-  public images: any = images
+export class PromoComponent {
+  public images: any = images;
+
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

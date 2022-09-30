@@ -1,28 +1,68 @@
 @import '../../../shared/styles/variables.scss';
+@import '../../../shared/styles/mixins.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
 
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  height: 90px;
-  padding: 80px 10px;
-  background-color: $main-color;
+  color: $theme-color;
+  height: 280px;
+  width: 100%;
+  background: url(../../../../assets/images/frame.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
-}
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 46px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 0.8px;
+    animation-duration: 1000ms;
+    animation-play-state: running;
+  }
 
-.header__title {
-  margin: 20px auto;
-  font: 500 46px "Montserrat", sans-serif;
-  text-transform: uppercase;
-  text-align: left;
-  letter-spacing: 1.6px;
-}
+  .animated {
+    animation-fill-mode: both;
+  }
 
-.header__text {
-  color: $extra-color;
-  font: 400 16px "Open Sans", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 180px;
+    height: 80%;
+    @include tablet {
+      padding: 0 80px;
+    }
+    @include smart {
+      padding: 0 40px;
+    }
+  }
+
+  &__info > * {
+    margin: 10px 0 0 0;
+  }
+
+  &__text {
+    color: $extra-color;
+    font: 400 16px "Open Sans", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    @include tablet {
+      font-size: 12px;
+    }
+  }
+
+  &__extra-text::after {
+    content: "";
+    display: inline-block;
+    border-top-style: solid;
+    border-color: inherit;
+    width: 22px;
+    border-top-width: 1px;
+  }
+
 }
