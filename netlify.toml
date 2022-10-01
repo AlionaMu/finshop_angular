@@ -1,3 +1,7 @@
 [build]
   publish = "dist/finshop_angular"
-  command = "CI= npm run build"
+  command = "ng build --prod"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
