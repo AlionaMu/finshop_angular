@@ -33,7 +33,7 @@
           formControlName="phone"
         />
         <small class="form__error" *ngIf="phone?.hasError('required') || phone?.hasError('pattern')">
-          {{ 'Необходимо указать телефон' }}
+          {{ 'Необходимо указать 12-значный номер телефона в формате +375292222222' }}
         </small>
       </mat-form-field>
       <mat-form-field appearance="fill">

@@ -65,7 +65,7 @@ export class FormComponent implements OnInit {
   public initForm(): void {
     this.form = this.formBuilder.group({
       name: new FormControl(''),
-      phone: new FormControl('', [Validators.required, Validators.pattern('[0-9 ]{12}')]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('[+][0-9]{12}')]),
       company: new FormControl(''),
     });
   }
