@@ -28,13 +28,10 @@
         <mat-label> {{ 'Телефон' }}</mat-label>
         <input
           matInput
-          placeholder="Телефон"
+          placeholder="+375*********"
           type="text"
           formControlName="phone"
         />
-        <small class="form__error" *ngIf="phone?.hasError('required') || phone?.hasError('pattern')">
-          {{ 'Необходимо указать 12-значный номер телефона в формате +375292222222' }}
-        </small>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label> {{ 'Название компании' }}</mat-label>
