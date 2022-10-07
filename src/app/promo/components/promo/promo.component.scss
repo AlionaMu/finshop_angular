@@ -88,10 +88,12 @@
 }
 
 .carousel-section {
+  width: 80%;
   margin: 15px auto;
-}
-
-carousel {
-  margin: 0 auto;
-  padding: 0 7%;
+  @include tablet {
+    width: 65%;
+  }
+  @include smart {
+    width: 50%;
+  }
 }
