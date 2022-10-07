@@ -3,7 +3,10 @@
     <img src="../../../assets/icons/result.svg" class="form__result-icon">
     <p class="form__result-text">Благодарим! Менеджер Finshop свяжется с Вами в ближайшее время</p>
   </div>
-  <div class="form__container" *ngIf="!isSuccessful">
+  <div class="form__result" *ngIf="isNotSuccessful">
+    <p class="form__result-text">Пожалуйста, попробуйте позже...</p>
+  </div>
+  <div class="form__container" *ngIf="!isSuccessful && !isNotSuccessful">
     <h4 class="form__title">
       {{ 'Готовы к сотрудничеству или остались вопросы?' }}
     </h4>
@@ -43,7 +46,7 @@
         />
       </mat-form-field>
       <div class="form__checkbox">
-        <input id="checkbox" type="checkbox" required="required">
+        <input id="checkbox" type="checkbox" required="required" [checked]="isChecked" (change)="isChecked = !isChecked">
         <label for="checkbox">
           <a href="https://finshop.by/media/docs/PrivacyPolicy.pdf" target="_blank" class="form__link">
             Даю согласие на обработку указанных мной персональных данных в соответствии с Политикой
@@ -51,9 +54,9 @@
           </a>
         </label>
       </div>
-        <button type="submit" mat-button [disabled]="form.invalid || disabled" class="form__button">
-         Отправить
-        </button>
+      <button type="submit" mat-button [disabled]="form.invalid || !isChecked" class="form__button">
+       Отправить
+      </button>
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         {{'err'}}<br />{{ errorMessage }}
       </div>

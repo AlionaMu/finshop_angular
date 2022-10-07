@@ -18,13 +18,15 @@ export class FormComponent implements OnInit {
 
   public isSuccessful: boolean = false;
 
+  public isNotSuccessful: boolean = false;
+
   public isSignUpFailed: boolean = true;
 
   public isChecked = false;
 
   public errorMessage: string = '';
 
-  public disabled = false;
+  public disabled = true;
 
   public constructor(
 
@@ -54,12 +56,15 @@ export class FormComponent implements OnInit {
     const phone: string = this.phone?.value;
     const company: string = this.company?.value;
     this.isSignUpFailed = false;
-    this.isSuccessful = true;
 
     this.postService.postData(name, phone, company).subscribe({
-      next: (response: any) => {console.log(response)},
-      error: (error: any) => console.log(error)
-      });
+      next: (response: any) => {
+        this.isSuccessful = true;
+      },
+      error: (error: any) => {
+        this.isNotSuccessful = true;
+      }
+    });
   }
 
   public initForm(): void {
